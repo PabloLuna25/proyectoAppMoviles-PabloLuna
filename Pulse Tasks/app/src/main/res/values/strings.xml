@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pulse Tasks</string>
+    <string name="ErrorMsgSignup">Error al registrar usuario</string>
+    <string name="ErrorMsgLogin">Error al loguearse</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pulse Tasks</string>
+    <string name="ErrorMsgSignup">Error at sign up</string>
+    <string name="ErrorMsgLogin">Error at login</string>
+</resources>
