@@ -10,7 +10,23 @@
     tools:context=".MainActivity">
 
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/loginPanel_main"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        app:cardBackgroundColor="#730e1418"
+        app:cardCornerRadius="55dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#1e2730"
+        app:strokeWidth="1dp">
 
+
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
