@@ -2,4 +2,8 @@
     <string name="app_name">Pulse Tasks</string>
     <string name="ErrorMsgSignup">Error al registrar usuario</string>
     <string name="ErrorMsgLogin">Error al loguearse</string>
+    <string name="MsgGreet_main">Bienvenido</string>
+    <string name="MsgDesc_main">Organiza tu día y planifica con antelación con recordatorios</string>
+    <string name="lbUsername">Nombre de usuario</string>
+    <string name="lbPassword">Contraseña</string>
 </resources>

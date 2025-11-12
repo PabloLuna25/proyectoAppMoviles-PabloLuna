@@ -3,4 +3,8 @@
     <string name="app_name">Pulse Tasks</string>
     <string name="ErrorMsgSignup">Error at sign up</string>
     <string name="ErrorMsgLogin">Error at login</string>
+    <string name="MsgGreet_main">Welcome</string>
+    <string name="MsgDesc_main">Track your day and plan ahead with reminders</string>
+    <string name="lbUsername">Username</string>
+    <string name="lbPassword">Password</string>
 </resources>

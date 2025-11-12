@@ -23,7 +23,140 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#1e2730"
-        app:strokeWidth="1dp">
+        app:strokeWidth="1dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="25dp"
+            android:id="@+id/mainLayout"
+            >
+            
+            <View
+                android:id="@+id/circleEC"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/circle_eye_catcher"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/lbTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/app_name"
+                android:textColor="#e6edf3"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@+id/circleEC"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lbGreet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/MsgGreet_main"
+                android:textColor="#e6edf3"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/circleEC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/msgDesc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbGreet"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/MsgDesc_main"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:id="@+id/txtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:fontFamily="@font/inter_medium"
+                android:maxLines="1"
+                android:inputType="text|textNoSuggestions"
+                android:scrollHorizontally="true"
+                android:ellipsize="none"
+                android:imeOptions="actionDone"
+                android:gravity="center_vertical|start"
+                android:textColor="#e6edf3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/msgDesc"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/input_field_login_signup"
+                />
+
+            <TextView
+                android:id="@+id/lbUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/lbUsername"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txtUsername"
+                app:layout_constraintTop_toTopOf="@+id/txtUsername"
+                android:clickable="false"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:id="@+id/txtPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+                android:layout_marginTop="15dp"
+                android:maxLines="1"
+                android:inputType="text|textNoSuggestions|textPassword"
+                android:scrollHorizontally="true"
+                android:ellipsize="none"
+                android:imeOptions="actionDone"
+                android:gravity="center_vertical|start"
+                android:textColor="#e6edf3"
+                android:background="@drawable/input_field_login_signup"
+                />
+
+            <TextView
+                android:id="@+id/lbPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/lbPassword"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txtPassword"
+                app:layout_constraintTop_toTopOf="@+id/txtPassword"
+                android:clickable="false"
+                />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </com.google.android.material.card.MaterialCardView>
