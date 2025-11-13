@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        //Conversión de density pixels (dp) a pixeles (px)
         fun dpToPx(dp: Float): Float {
             val density = resources.displayMetrics.density
             return dp * density
