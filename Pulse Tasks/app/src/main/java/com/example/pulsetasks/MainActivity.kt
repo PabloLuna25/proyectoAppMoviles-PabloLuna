@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.cardview.widget.CardView
 import android.view.View
 import android.view.animation.TranslateAnimation
+import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         val constraintLayout = findViewById<ConstraintLayout>(R.id.mainLayout)
         val constraintSet = ConstraintSet()
         constraintSet.clone(constraintLayout)
-        var transition = AutoTransition()
+        val transition = AutoTransition()
 
 
         //Llamado de la animación en username
@@ -95,6 +96,12 @@ class MainActivity : AppCompatActivity() {
                 lbPassword.startAnimation(passwordLabelAnimBack)
             }
         }
+
+        val btnPerson = findViewById<Button>(R.id.btnSignup)
+        btnPerson.setOnClickListener(View.OnClickListener{ view->
+            Util.Util.openActivity(this
+                , SignUpActivity::class.java)
+        })
 
 
     }
