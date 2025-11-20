@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "543571721544",
+    "project_id": "pulse-tasks-6767",
+    "storage_bucket": "pulse-tasks-6767.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543571721544:android:f80f0e9331dc830145c77d",
+        "android_client_info": {
+          "package_name": "com.example.pulsetasks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiyaJba1IgzQKVKVdQ6xGAcO6wpltylaE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

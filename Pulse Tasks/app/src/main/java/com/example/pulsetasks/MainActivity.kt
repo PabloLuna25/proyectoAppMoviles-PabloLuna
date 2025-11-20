@@ -1,5 +1,7 @@
 package com.example.pulsetasks
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
@@ -10,13 +12,22 @@ import androidx.cardview.widget.CardView
 import android.view.View
 import android.view.animation.TranslateAnimation
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
+
+    var auth = FirebaseAuth.getInstance()
+    private lateinit var btnLogin: Button
+    private lateinit var txtUsername: EditText
+    private lateinit var txtPassword: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
@@ -43,9 +54,9 @@ class MainActivity : AppCompatActivity() {
 
         //Label y text field para la animación
         val lbUsername = findViewById<TextView>(R.id.lbUsername)
-        val txtUsername = findViewById<TextView>(R.id.txtUsername)
         val lbPassword = findViewById<TextView>(R.id.lbPassword)
-        val txtPassword = findViewById<TextView>(R.id.txtPassword)
+        txtUsername = findViewById(R.id.txtUsername)
+        txtPassword = findViewById(R.id.txtPassword)
 
         //Animaciones
         val usernameLabelAnimUp = AnimationUtils.loadAnimation(this, R.anim.label_move_top)
@@ -97,12 +108,36 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val btnPerson = findViewById<Button>(R.id.btnSignup)
-        btnPerson.setOnClickListener(View.OnClickListener{ view->
+        val btnSignIn = findViewById<Button>(R.id.btnSignup)
+        btnSignIn.setOnClickListener(View.OnClickListener{ view->
             Util.Util.openActivity(this
                 , SignUpActivity::class.java)
         })
 
+        btnLogin = findViewById(R.id.btnLogin_main)
+        btnLogin.setOnClickListener {
+            onLogin()
+        }
+
+
+    }
+
+    private fun onLogin(){
+        btnLogin = findViewById(R.id.btnLogin_main)
+        txtUsername = findViewById(R.id.txtUsername)
+        txtPassword = findViewById(R.id.txtPassword)
+
+        if(txtUsername.text.isEmpty() || txtPassword.text.isEmpty()){
+            Toast.makeText(this, "Llene los campos MAE PORFAVOR DAAAMN", Toast.LENGTH_SHORT).show()
+        }else{
+            auth.signInWithEmailAndPassword(txtUsername.text.toString(), txtPassword.text.toString()).addOnCompleteListener {
+                if(it.isSuccessful){
+                    Toast.makeText(this, "Auth OK", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this,"Error con la autenticación", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
     }
 }
