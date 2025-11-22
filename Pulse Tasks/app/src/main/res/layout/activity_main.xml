@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/elfokinfondoysefokinacabo"
+    tools:context=".MainActivity">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/loginPanel_main"
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        app:cardBackgroundColor="#730e1418"
+        app:cardCornerRadius="55dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#1e2730"
+        app:strokeWidth="1dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="25dp"
+            android:id="@+id/mainLayout"
+            >
+            
+            <View
+                android:id="@+id/circleEC"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/circle_eye_catcher"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/lbTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/app_name"
+                android:textColor="#e6edf3"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@+id/circleEC"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lbGreet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/MsgGreet_main"
+                android:textColor="#e6edf3"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/circleEC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/msgDesc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbGreet"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/MsgDesc_main"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:id="@+id/txtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:fontFamily="@font/inter_medium"
+                android:maxLines="1"
+                android:inputType="text|textNoSuggestions"
+                android:scrollHorizontally="true"
+                android:ellipsize="none"
+                android:imeOptions="actionDone"
+                android:gravity="center_vertical|start"
+                android:textColor="#e6edf3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/msgDesc"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/input_field_login_signup"
+                />
+
+            <TextView
+                android:id="@+id/lbUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/lbUsername"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txtUsername"
+                app:layout_constraintTop_toTopOf="@+id/txtUsername"
+                android:clickable="false"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:id="@+id/txtPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+                android:layout_marginTop="15dp"
+                android:maxLines="1"
+                android:inputType="text|textNoSuggestions|textPassword"
+                android:scrollHorizontally="true"
+                android:ellipsize="none"
+                android:imeOptions="actionDone"
+                android:gravity="center_vertical|start"
+                android:textColor="#e6edf3"
+                android:background="@drawable/input_field_login_signup"
+                />
+
+            <TextView
+                android:id="@+id/lbPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/lbPassword"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txtPassword"
+                app:layout_constraintTop_toTopOf="@+id/txtPassword"
+                android:clickable="false"
+                />
+
+            <Button
+                android:id="@+id/btnLogin_main"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/btn_primary_color_1"
+                app:backgroundTint="@null"
+                android:textAlignment="textEnd"
+                android:text="Login"
+                android:paddingEnd="20dp"
+                android:paddingStart="50dp"
+                android:fontFamily="@font/inter_medium"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/msgDesc"
+
+
+            />
+
+            <View
+                android:id="@+id/imgLogin_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toTopOf="@id/btnLogin_main"
+                app:layout_constraintStart_toStartOf="@id/btnLogin_main"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="18dp"
+                android:background="@drawable/login_icon_main"
+                />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:id="@+id/btnSignup"
+                app:layout_constraintTop_toBottomOf="@id/msgDesc"
+                app:layout_constraintEnd_toStartOf="@+id/btnLogin_main"
+                android:layout_marginTop="160dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_background_text_color"
+                android:backgroundTint="@null"
+                app:backgroundTint="@null"
+                android:text="Sign up"
+                android:fontFamily="@font/inter_medium"
+                android:textStyle="bold"
+                android:textColor="@color/background_text_contrast"
+                android:textSize="18sp"
+                />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
