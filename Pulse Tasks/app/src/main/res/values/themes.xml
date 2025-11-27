@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PulseTasks" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:windowSplashScreenBackground">#0e1418</item>
+
+        <item name="android:windowSplashScreenAnimationDuration">@drawable/pulsetasks_icon</item>
+    </style>
+
+    <style name="Theme.PulseTasks" parent="Base.Theme.PulseTasks" />
+</resources>
