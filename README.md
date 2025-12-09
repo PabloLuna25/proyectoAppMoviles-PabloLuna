@@ -12,12 +12,15 @@ El proyecto pretende poder:
 
 ### Pantalla 1
 Pantalla de logueo/registro básico para que el usuario logre entrar a la aplicación y mantenga sus tareas coordinadas
+
 ![Imagen de la pantalla de logueo](https://github.com/PabloLuna25/proyectoAppMoviles-PabloLuna/blob/main/App_pantalla1.png)
 
 ### Pantalla 2
 Pantalla donde se muestran las tareas pendientes, la hora, el día y su nivel de importancia
+
 ![Imagen de la pantalla de tareas pendientes](https://github.com/PabloLuna25/proyectoAppMoviles-PabloLuna/blob/main/App_pantalla2.png)
 
 ### Pantalla 3
 Pantalla sobre las opciones de configuración para añadir una tarea
+
 ![Imagen de las opciones para configurar una tarea](https://github.com/PabloLuna25/proyectoAppMoviles-PabloLuna/blob/main/App_pantalla3.png)
