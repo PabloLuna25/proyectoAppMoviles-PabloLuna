@@ -7,5 +7,6 @@
     <color name="primary_2">#ffd166</color>
     <color name="background_color_contrast">#15232b</color>
     <color name="background_text_contrast">#c7e6ff</color>
+    <color name="toolbar_bg">#071019</color>
 
 </resources>

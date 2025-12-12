@@ -13,7 +13,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/loginPanel_main"
         android:layout_width="350dp"
-        android:layout_height="450dp"
+        android:layout_height="500dp"
         app:cardBackgroundColor="#730e1418"
         app:cardCornerRadius="55dp"
         app:cardPreventCornerOverlap="false"
@@ -81,6 +81,41 @@
                 android:background="@drawable/input_field_login_signup"
                 />
 
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:fontFamily="@font/inter_medium"
+                android:maxLines="1"
+                android:inputType="text|textNoSuggestions"
+                android:scrollHorizontally="true"
+                android:ellipsize="none"
+                android:imeOptions="actionDone"
+                android:gravity="center_vertical|start"
+                android:textColor="#e6edf3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/input_field_login_signup"
+                />
+
+            <TextView
+                android:id="@+id/lbEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="Email"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txtEmail"
+                app:layout_constraintTop_toTopOf="@+id/txtEmail"
+                android:clickable="false"
+                />
+
             <TextView
                 android:id="@+id/lbUsername"
                 android:layout_width="wrap_content"
@@ -104,7 +139,7 @@
                 android:paddingEnd="20dp"
                 android:id="@+id/txtPassword"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmail"
                 android:layout_marginTop="15dp"
                 android:maxLines="1"
                 android:inputType="text|textNoSuggestions|textPassword"
@@ -131,11 +166,45 @@
                 android:clickable="false"
                 />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:id="@+id/txtRePassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+                android:layout_marginTop="15dp"
+                android:maxLines="1"
+                android:inputType="text|textNoSuggestions|textPassword"
+                android:scrollHorizontally="true"
+                android:ellipsize="none"
+                android:imeOptions="actionDone"
+                android:gravity="center_vertical|start"
+                android:textColor="#e6edf3"
+                android:background="@drawable/input_field_login_signup"
+                />
+
+            <TextView
+                android:id="@+id/lbRePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="Confirm password"
+                android:textColor="#6b7780"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txtRePassword"
+                app:layout_constraintTop_toTopOf="@+id/txtRePassword"
+                android:clickable="false"
+                />
+
             <Button
                 android:id="@+id/btnSignIn"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginTop="160dp"
+                android:layout_marginTop="270dp"
                 android:background="@drawable/btn_primary_color_1"
                 app:backgroundTint="@null"
                 android:textAlignment="textEnd"
@@ -156,7 +225,7 @@
                 android:id="@+id/btnCancel"
                 app:layout_constraintTop_toBottomOf="@id/msgDesc"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="160dp"
+                android:layout_marginTop="270dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/btn_background_text_color"
                 android:backgroundTint="@null"

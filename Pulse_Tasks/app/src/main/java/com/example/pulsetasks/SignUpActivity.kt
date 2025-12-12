@@ -39,6 +39,8 @@ class SignUpActivity: AppCompatActivity() {
 
     private lateinit var txtUsername: EditText
     private lateinit var txtPassword: EditText
+    private lateinit var txtEmail: EditText
+    private lateinit var txtRePassword: EditText
     private lateinit var btnSignIn: Button
     private lateinit var btnCancel: Button
 
@@ -82,6 +84,10 @@ class SignUpActivity: AppCompatActivity() {
         txtUsername = findViewById(R.id.txtUsername)
         val lbPassword = findViewById<TextView>(R.id.lbPassword)
         txtPassword = findViewById(R.id.txtPassword)
+        val lbEmail = findViewById<TextView>(R.id.lbEmail)
+        txtEmail = findViewById(R.id.txtEmail)
+        val lbRePassword = findViewById<TextView>(R.id.lbRePassword)
+        txtRePassword = findViewById(R.id.txtRePassword)
         btnCancel = findViewById<Button>(R.id.btnCancel)
         btnSignIn = findViewById<Button>(R.id.btnSignIn)
 
@@ -90,6 +96,10 @@ class SignUpActivity: AppCompatActivity() {
         val usernameLabelAnimBack = AnimationUtils.loadAnimation(this, R.anim.label_move_back)
         val passwordLabelAnimUp = AnimationUtils.loadAnimation(this, R.anim.label_move_top)
         val passwordLabelAnimBack = AnimationUtils.loadAnimation(this, R.anim.label_move_back)
+        val emailLabelAnimUp = AnimationUtils.loadAnimation(this, R.anim.label_move_top)
+        val emailLabelAnimBack = AnimationUtils.loadAnimation(this, R.anim.label_move_back)
+        val rePasswordLabelAnimUp = AnimationUtils.loadAnimation(this, R.anim.label_move_top)
+        val rePasswordLabelAnimBack = AnimationUtils.loadAnimation(this, R.anim.label_move_back)
 
         //Prueba movimiento real de margenes
         val constraintLayout = findViewById<ConstraintLayout>(R.id.mainLayout)
@@ -135,6 +145,42 @@ class SignUpActivity: AppCompatActivity() {
             }
         }
 
+        //Llamado de la animación en email
+        txtEmail.setOnFocusChangeListener { _, hasFocus ->
+            if(hasFocus && txtEmail.text.isEmpty()){
+                transition.duration = 300
+                constraintSet.setMargin(R.id.txtEmail, ConstraintSet.TOP, dpToPx(25f).toInt())
+                TransitionManager.beginDelayedTransition(constraintLayout, transition)
+                constraintSet.applyTo(constraintLayout)
+                lbEmail.startAnimation(emailLabelAnimUp)
+                println("Email anim up")
+            }else if(txtEmail.text.isEmpty()) {
+                transition.duration = 300
+                constraintSet.setMargin(R.id.txtEmail, ConstraintSet.TOP, dpToPx(15f).toInt())
+                TransitionManager.beginDelayedTransition(constraintLayout, transition)
+                constraintSet.applyTo(constraintLayout)
+                lbEmail.startAnimation(emailLabelAnimBack)
+            }
+        }
+
+        //Llamado a la animación en RePassword
+        txtRePassword.setOnFocusChangeListener { _, hasFocus ->
+            if(hasFocus && txtRePassword.text.isEmpty()){
+                transition.duration = 300
+                constraintSet.setMargin(R.id.txtRePassword, ConstraintSet.TOP, dpToPx(25f).toInt())
+                TransitionManager.beginDelayedTransition(constraintLayout, transition)
+                constraintSet.applyTo(constraintLayout)
+                lbRePassword.startAnimation(rePasswordLabelAnimUp)
+                println("Password anim up")
+            }else if(txtRePassword.text.isEmpty()) {
+                transition.duration = 300
+                constraintSet.setMargin(R.id.txtRePassword, ConstraintSet.TOP, dpToPx(15f).toInt())
+                TransitionManager.beginDelayedTransition(constraintLayout, transition)
+                constraintSet.applyTo(constraintLayout)
+                lbRePassword.startAnimation(rePasswordLabelAnimBack)
+            }
+        }
+
         btnSignIn.setOnClickListener {
             registrarUser()
         }
@@ -148,19 +194,21 @@ class SignUpActivity: AppCompatActivity() {
 
     private fun registrarUser(){
         val username = txtUsername.text.toString()
+        val email = txtEmail.text.toString()
         val password = txtPassword.text.toString()
+        val rePassword = txtRePassword.text.toString()
 
-        if(username.isEmpty() || password.isEmpty()){
+        if(username.isEmpty() || password.isEmpty() || email.isEmpty() || rePassword.isEmpty()){
             Toast.makeText(this, "Llene los campos pai", Toast.LENGTH_SHORT).show()
-        }else{
-            auth.createUserWithEmailAndPassword(username, password)
+        }else if (password == rePassword){
+            auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val dt: Date = Date()
                         val user = hashMapOf(
                             "idemp" to task.result?.user?.uid,
                             "usuario" to username,
-                            "email" to username,
+                            "email" to email,
                             "ultAcceso" to dt.toString(),
                         )
                         db.collection("users")
@@ -194,6 +242,8 @@ class SignUpActivity: AppCompatActivity() {
                         Toast.makeText(this,"Error al registrar usuario - AUTH",Toast.LENGTH_SHORT).show()
                     }
                 }
+        }else{
+            Toast.makeText(this, "Password doesnt match", Toast.LENGTH_SHORT).show()
         }
 
     }

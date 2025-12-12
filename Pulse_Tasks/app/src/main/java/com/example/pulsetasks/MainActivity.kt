@@ -3,6 +3,7 @@ package com.example.pulsetasks
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnLogin: Button
     private lateinit var txtUsername: EditText
     private lateinit var txtPassword: EditText
+    private lateinit var lbPassword: TextView
+    private lateinit var lbUsername: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -53,10 +56,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Label y text field para la animación
-        val lbUsername = findViewById<TextView>(R.id.lbUsername)
-        val lbPassword = findViewById<TextView>(R.id.lbPassword)
+        lbUsername = findViewById(R.id.lbUsername)
+        lbPassword = findViewById(R.id.lbPassword)
         txtUsername = findViewById(R.id.txtUsername)
         txtPassword = findViewById(R.id.txtPassword)
+
 
         //Animaciones
         val usernameLabelAnimUp = AnimationUtils.loadAnimation(this, R.anim.label_move_top)
@@ -112,6 +116,8 @@ class MainActivity : AppCompatActivity() {
         btnSignIn.setOnClickListener(View.OnClickListener{ view->
             Util.Util.openActivity(this
                 , SignUpActivity::class.java)
+
+            resetMainScreen()
         })
 
         btnLogin = findViewById(R.id.btnLogin_main)
@@ -119,6 +125,19 @@ class MainActivity : AppCompatActivity() {
             onLogin()
         }
 
+        Log.d("AUTH", "UID = ${FirebaseAuth.getInstance().currentUser?.uid}")
+
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val user = FirebaseAuth.getInstance().currentUser?.uid
+        if(user != null){
+            Util.Util.openActivity(this, HomeActivity::class.java)
+            finish()
+        }
 
     }
 
@@ -133,11 +152,33 @@ class MainActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(txtUsername.text.toString(), txtPassword.text.toString()).addOnCompleteListener {
                 if(it.isSuccessful){
                     Toast.makeText(this, "Auth OK", Toast.LENGTH_SHORT).show()
+                    Util.Util.openActivity(this, HomeActivity::class.java)
+                    Log.d("AUTH", "UID = ${FirebaseAuth.getInstance().currentUser?.uid}")
+                    resetMainScreen()
                 }else{
                     Toast.makeText(this,"Error con la autenticación", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
+    }
+
+    private fun resetMainScreen(){
+        //Variables to and for reset
+        lbUsername = findViewById(R.id.lbUsername)
+        lbPassword = findViewById(R.id.lbPassword)
+        txtUsername = findViewById(R.id.txtUsername)
+        txtPassword = findViewById(R.id.txtPassword)
+        val usernameLabelAnimBack = AnimationUtils.loadAnimation(this, R.anim.label_move_back)
+        val passwordLabelAnimBack = AnimationUtils.loadAnimation(this, R.anim.label_move_back)
+
+        //Reset of elements to a base state
+        txtUsername.setText("")
+        txtPassword.setText("")
+        txtUsername.clearFocus()
+        txtPassword.clearFocus()
+        lbUsername.startAnimation(usernameLabelAnimBack)
+        lbPassword.startAnimation(passwordLabelAnimBack)
 
     }
 }
