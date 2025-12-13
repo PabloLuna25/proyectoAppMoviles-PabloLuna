@@ -1,5 +1,8 @@
 package com.example.pulsetasks
 
+import Data.Reminder
+import Util.ReminderAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -10,11 +13,18 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.storage.FirebaseStorage
 
 class HomeActivity: AppCompatActivity() {
 
     lateinit var btnAddReminder: Button
+    private val reminders = mutableListOf<Reminder>()
+    private lateinit var adapter: ReminderAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +35,24 @@ class HomeActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
         //---------------------------------
         val uid = FirebaseAuth.getInstance().uid
-        var testo = findViewById<TextView>(R.id.letest)
-
-        testo.text = uid.toString()
         //---------------------------------
+
+        FirebaseFirestore.getInstance()
+            .collection("reminders")
+            .whereEqualTo("uid", uid)
+            .orderBy("createdAt", Query.Direction.DESCENDING)
+
+        val recycler = findViewById<RecyclerView>(R.id.recyclerReminders)
+        adapter = ReminderAdapter(
+            reminders,
+            onEdit = { reminder -> openEdit(reminder) },
+            onDelete = { reminder -> deleteReminder(reminder) }
+        )
+
+        loadReminders()
+
+        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.adapter = adapter
 
         btnAddReminder = findViewById(R.id.btn_addReminder)
         btnAddReminder.setOnClickListener { _ ->
@@ -57,6 +81,58 @@ class HomeActivity: AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun loadReminders() {
+        val userUid = FirebaseAuth.getInstance().uid
+
+        if (userUid == null) {
+            Log.e("REMINDERS", "User UID is null")
+            return
+        }
+
+        FirebaseFirestore.getInstance()
+            .collection("reminders")
+            .whereEqualTo("uid", userUid)
+            .addSnapshotListener { snapshot, error ->
+
+                if (error != null) {
+                    Log.e("REMINDERS", "Firestore error", error)
+                    return@addSnapshotListener
+                }
+
+                if (snapshot == null || snapshot.isEmpty) {
+                    Log.d("REMINDERS", "No reminders found")
+                    reminders.clear()
+                    adapter.notifyDataSetChanged()
+                    return@addSnapshotListener
+                }
+
+                reminders.clear()
+                reminders.addAll(snapshot.toObjects(Reminder::class.java))
+                adapter.notifyDataSetChanged()
+
+                Log.d("REMINDERS", "Loaded ${reminders.size} reminders")
+            }
+    }
+
+    fun deleteReminder(reminder: Reminder) {
+        FirebaseFirestore.getInstance()
+            .collection("reminders")
+            .document(reminder.id)
+            .delete()
+
+        reminder.imageUrl?.let {
+            FirebaseStorage.getInstance()
+                .getReferenceFromUrl(it)
+                .delete()
+        }
+    }
+
+    fun openEdit(reminder: Reminder) {
+        val intent = Intent(this, AddReminderActivity::class.java)
+        intent.putExtra("reminderId", reminder.id)
+        startActivity(intent)
     }
 
 }
