@@ -73,7 +73,7 @@ class HomeActivity: AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.btnLogOut -> {
-                Toast.makeText(this, "Logged out yey", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
                 FirebaseAuth.getInstance().signOut()
                 Log.d("AUTH", "UID = ${FirebaseAuth.getInstance().currentUser?.uid}")
                 Util.Util.openActivity(this, MainActivity::class.java)
@@ -122,9 +122,9 @@ class HomeActivity: AppCompatActivity() {
             .document(reminder.id)
             .delete()
 
-        reminder.imageUrl?.let {
+        reminder.imageUrl?.let { url ->
             FirebaseStorage.getInstance()
-                .getReferenceFromUrl(it)
+                .getReferenceFromUrl(url)
                 .delete()
         }
     }

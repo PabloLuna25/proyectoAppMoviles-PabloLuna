@@ -22,7 +22,7 @@
             android:id="@+id/lbTitleAddTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Task"
+            android:text="@string/lbAddTask"
             android:textSize="24sp"
             android:textColor="#9fb8c9"
             android:fontFamily="@font/inter_medium"
@@ -45,7 +45,7 @@
         android:fontFamily="@font/inter"
         android:textColor="#9fb8c9"
         android:textSize="15sp"
-        android:text="Titulo del reminder jasd"
+        android:text="@string/lbTituloTarea"
         />
 
     <EditText
@@ -80,7 +80,7 @@
         android:fontFamily="@font/inter"
         android:textColor="#9fb8c9"
         android:textSize="15sp"
-        android:text="Descripción"
+        android:text="@string/lbDescription"
         />
 
     <EditText
@@ -127,7 +127,7 @@
         android:fontFamily="@font/inter"
         android:textColor="#9fb8c9"
         android:textSize="15sp"
-        android:text="Time"
+        android:text="@string/lbTime"
         />
 
     <EditText
@@ -195,7 +195,7 @@
         android:background="@drawable/btn_primary_color_1"
         app:backgroundTint="@null"
         android:textAlignment="textEnd"
-        android:text="Add image"
+        android:text="@string/btnAddImage"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:fontFamily="@font/inter_medium"
@@ -228,7 +228,7 @@
         android:background="@drawable/btn_background_text_color"
         android:backgroundTint="@null"
         app:backgroundTint="@null"
-        android:text="Cancel"
+        android:text="@string/btnCancel"
         android:fontFamily="@font/inter_medium"
         android:textStyle="bold"
         android:textColor="@color/background_text_contrast"
@@ -244,7 +244,7 @@
         android:background="@drawable/btn_primary_color_1"
         app:backgroundTint="@null"
         android:textAlignment="center"
-        android:text="Save"
+        android:text="@string/btnSave"
         android:fontFamily="@font/inter_medium"
         android:textStyle="bold"
         android:textColor="@color/white"

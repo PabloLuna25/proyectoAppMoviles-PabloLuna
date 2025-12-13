@@ -6,4 +6,12 @@
     <string name="MsgDesc_main">Organiza tu día y planifica con antelación con recordatorios</string>
     <string name="lbUsername">Nombre de usuario</string>
     <string name="lbPassword">Contraseña</string>
+    <string name="lbAddTask">Añadir tarea</string>
+    <string name="lbTituloTarea">Título de la tarea</string>
+    <string name="lbDescription">Descripción</string>
+    <string name="btnCancel">Cancelar</string>
+    <string name="btnSave">Guardar</string>
+    <string name="btnAddImage">Añadir imagen</string>
+    <string name="lbTime">Hora</string>
+    <string name="btnSignUp">Registrarse</string>
 </resources>

@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         txtPassword = findViewById(R.id.txtPassword)
 
         if(txtUsername.text.isEmpty() || txtPassword.text.isEmpty()){
-            Toast.makeText(this, "Llene los campos MAE PORFAVOR DAAAMN", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Llene los campos", Toast.LENGTH_SHORT).show()
         }else{
             auth.signInWithEmailAndPassword(txtUsername.text.toString(), txtPassword.text.toString()).addOnCompleteListener {
                 if(it.isSuccessful){

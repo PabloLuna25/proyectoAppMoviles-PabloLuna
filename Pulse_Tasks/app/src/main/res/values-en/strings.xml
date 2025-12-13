@@ -7,4 +7,12 @@
     <string name="MsgDesc_main">Track your day and plan ahead with reminders</string>
     <string name="lbUsername">Username</string>
     <string name="lbPassword">Password</string>
+    <string name="lbAddTask">Add task</string>
+    <string name="lbTituloTarea">Reminder\'s title</string>
+    <string name="lbDescription">Description</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnSave">Save</string>
+    <string name="btnAddImage">Add image</string>
+    <string name="lbTime">Time</string>
+    <string name="btnSignUp">Sign up</string>
 </resources>

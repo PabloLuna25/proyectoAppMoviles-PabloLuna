@@ -30,6 +30,7 @@ class AddReminderActivity: AppCompatActivity() {
     lateinit var txtHour: EditText
     lateinit var txtMinute: EditText
     lateinit var btnSaveReminder: Button
+    lateinit var btnCancelAddReminder: Button
 
     val db = FirebaseFirestore.getInstance()
 
@@ -123,6 +124,11 @@ class AddReminderActivity: AppCompatActivity() {
                     null
                 )
             }
+        }
+
+        btnCancelAddReminder = findViewById(R.id.btnCancelReminder)
+        btnCancelAddReminder.setOnClickListener {
+            onBackPressed()
         }
 
     }
